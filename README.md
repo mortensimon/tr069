@@ -42,14 +42,14 @@ The server is responsive and offers a wide range of features. It has been
 tested with several hundred thousands of devices (at Telenor). It has also been
 tested with a range of devices:
 
-Eltek R7121
-Eltek R7921
-Inteno routers
-Ping Communication RGW208EN
-Ping Communication IAD208AN
-Ping Communication NPA201E
-Speedtouch 585i
-Zyxel P2602
+Eltek R7121  
+Eltek R7921  
+Inteno routers  
+Ping Communication RGW208EN  
+Ping Communication IAD208AN  
+Ping Communication NPA201E  
+Speedtouch 585i  
+Zyxel P2602  
 
 No doubt the server can work with any other TR-069 device, if the device does 
 not contain very troublesome bugs (which it very often does!).
