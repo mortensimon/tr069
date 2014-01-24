@@ -289,6 +289,7 @@ public class TestServlet extends HttpServlet {
 				while ((line = br.readLine()) != null) {
 					resultStr += line + "\n";
 				}
+				br.close();
 				tae.addText(resultStr);
 			}
 			tr.td().input("xml-update", "submit", "Update result");
