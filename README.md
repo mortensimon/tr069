@@ -27,8 +27,7 @@ Git view: Import git repo
 Git view: Import projects from git repo, import as general project    
 Package/Navigator view: Change project facets to Java 1.7 and Dynamic Web Module 3.0      
 Package/Navigator view: Deployment Assembly project reference to the freeacs-common, dbi and prov project      
-Package/Navigator view: Add libs to classpath from freeacs-lib "project"   
-Package/Navigator view: Specify Library->Server runtime on classpath - ex: use an installed Tomcat 7 server    
+Package/Navigator view: Specify Library->Server runtime on classpath - ex: use an installed Tomcat 7 server  
 
 Overview
 --------
@@ -66,6 +65,8 @@ The features offered by the server are:
 * Spread-of-traffic - avoid troublesome peak loads of devices connecting
 * Detailed logging, to file and syslog
 * Two test-systems, to enable really complex testing of the devices
+
+Also see the documentation found in the docs-folder
 
 
 
