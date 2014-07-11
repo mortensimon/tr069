@@ -189,8 +189,8 @@ public class Provisioning extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// 1. If HTTP CONTINUE header present, return "yes" and return - should be correct behavior - the client will return 
-		if (hasContinueHeader(req, res))
-			return;
+//    if (hasContinueHeader(req, res))
+//      return;
 		HTTPReqResData reqRes = null;
 		try {
 			// Create the main object which contains all objects concerning the entire

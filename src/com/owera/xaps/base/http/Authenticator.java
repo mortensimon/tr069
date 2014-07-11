@@ -120,6 +120,7 @@ public class Authenticator {
 			// Something failed in the verification step - the device is not allowed or something like that
 			throw ex;
 		}
+		sessionData.setAuthenticated(true);
 		/* Morten - jan 2014 - no longer check certificates, since going open source
 		if (authenticated) { // Can only happen if verification process is completed
 			authenticated = checkCertificate(reqRes);
