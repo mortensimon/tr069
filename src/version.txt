@@ -1,3 +1,8 @@
+v3.0.42 (2014-08-05)
+- doc: improved docs, removed some old docs. Updated to FreeACS
+- doc: improved some logging
+- doc: removed some unused stuff from property file
+- ref: removed some unused code
 v3.0.41 (2013-09-13)
 - bug: SHELL-JOB handles unknown parameters
 v3.0.40 (2013-08-27)

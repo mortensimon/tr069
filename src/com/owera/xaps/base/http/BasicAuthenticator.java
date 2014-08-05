@@ -53,7 +53,7 @@ public class BasicAuthenticator {
 	 */
 	private static boolean verify(HTTPReqResData reqRes, String authorization) throws TR069AuthenticationException {
 
-		Log.debug(DigestAuthenticator.class, "Basic verification of CPE starts, located on IP-address " + reqRes.getReq().getRemoteHost());
+		Log.debug(BasicAuthenticator.class, "Basic verification of CPE starts, located on IP-address " + reqRes.getReq().getRemoteHost());
 		authorization = authorization.trim();
 		authorization = Util.removePrefix(authorization, "basic");
 		authorization = authorization.trim();

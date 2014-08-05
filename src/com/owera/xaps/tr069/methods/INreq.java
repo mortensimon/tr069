@@ -111,10 +111,10 @@ public class INreq {
 				keyRoot = paramValue.substring(0, keyRootEndPos + 1);
 				if (keyRoot != null && (keyRoot.equals("Device.") || keyRoot.equals("InternetGatewayDevice."))) {
 					sessionData.setKeyRoot(keyRoot);
-					String configFileVersionParameter = "DeviceInfo.VendorConfigFile.1.Version";
-					if (Properties.isConfigFileVersionQuirk(sessionData))
-						configFileVersionParameter = "DeviceInfo.VendorConfigFile.Version";
-					cpeParams = new CPEParameters(keyRoot, configFileVersionParameter);
+//					String configFileVersionParameter = "DeviceInfo.VendorConfigFile.1.Version";
+//					if (Properties.isConfigFileVersionQuirk(sessionData))
+//						configFileVersionParameter = "DeviceInfo.VendorConfigFile.Version";
+					cpeParams = new CPEParameters(keyRoot);
 					sessionData.setCpeParameters(cpeParams);
 					informParams = new InformParameters(keyRoot);
 					sessionData.setInformParameters(informParams);

@@ -44,17 +44,15 @@ public class CPEParameters {
 
 	private Map<String, ParameterValueStruct> cpeParams = new HashMap<String, ParameterValueStruct>();
 
-	public CPEParameters(String keyRoot, String configVersionParam) {
+	public CPEParameters(String keyRoot) {
 		this.keyRoot = keyRoot;
 		CONFIG_FILES = keyRoot + "DeviceInfo.VendorConfigFile.";
-		//		CONFIG_VERSION = keyRoot + "DeviceInfo.VendorConfigFile.1.Version";
 		SOFTWARE_VERSION = keyRoot + "DeviceInfo.SoftwareVersion";
 		PERIODIC_INFORM_INTERVAL = keyRoot + "ManagementServer.PeriodicInformInterval";
 		CONNECTION_URL = keyRoot + "ManagementServer.ConnectionRequestURL";
 		CONNECTION_PASSWORD = keyRoot + "ManagementServer.ConnectionRequestPassword";
 		CONNECTION_USERNAME = keyRoot + "ManagementServer.ConnectionRequestUsername";
 		cpeParams.put(CONFIG_FILES, null);
-		//		cpeParams.put(CONFIG_VERSION, null);
 		cpeParams.put(SOFTWARE_VERSION, null);
 		cpeParams.put(PERIODIC_INFORM_INTERVAL, null);
 		cpeParams.put(CONNECTION_URL, null);

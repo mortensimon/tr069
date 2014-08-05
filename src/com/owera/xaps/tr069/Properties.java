@@ -26,13 +26,10 @@ public class Properties {
 		return version;
 	}
 
-	//	public static boolean isConfigTargetFileQuirk(SessionData sessionData) {
-	//		return isQuirk("configtargetfile", getUnittypeName(sessionData), getVersion(sessionData));
-	//	}
-
-	public static boolean isConfigFileVersionQuirk(SessionData sessionData) {
-		return isQuirk("configfileversion", getUnittypeName(sessionData), getVersion(sessionData));
-	}
+  // public static boolean isConfigFileVersionQuirk(SessionData sessionData) {
+  // return isQuirk("configfileversion", getUnittypeName(sessionData),
+  // getVersion(sessionData));
+  // }
 
 	public static boolean isParameterkeyQuirk(SessionData sessionData) {
 		return isQuirk("parameterkey", getUnittypeName(sessionData), getVersion(sessionData));
