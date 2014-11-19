@@ -91,7 +91,7 @@ public class ShellJobLogic {
 	 */
 	private static void executeShellScript(HTTPReqResData reqRes, SessionData sessionData, Job job, UnitJob uj) throws TR069Exception {
 		ScriptExecutions executions = Provisioning.getExecutions();
-		String scriptArgs = "\" \"-uut:" + sessionData.getUnittype().getName() + "/pr:" + sessionData.getProfile().getName() + "/un:" + sessionData.getUnitId() + "\"";
+		String scriptArgs = "\"-uut:" + sessionData.getUnittype().getName() + "/pr:" + sessionData.getProfile().getName() + "/un:" + sessionData.getUnitId() + "\"";
 		String requestId = "JOB:" + job.getId() + ":" + random.nextInt(1000000); // should be a unique Id
 		try {
 			executions.requestExecution(job.getFile(), scriptArgs, requestId);

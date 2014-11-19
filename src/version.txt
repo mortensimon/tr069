@@ -1,3 +1,5 @@
+v3.0.44 (2014-11-19)
+- bug: the context of a SHELL JOB was not set correctly, most likely with all contexts containing whitespace
 v3.0.43 (2014-08-19)
 - bug: authentication bug fixed (for the 2nd time)
 v3.0.42 (2014-08-05)
