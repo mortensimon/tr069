@@ -1,3 +1,5 @@
+v3.0.45 (2014-12-19)
+- lib: dbi v1.74.37 - a severe bug was fixed (matching of groups in a job)
 v3.0.44 (2014-11-19)
 - bug: the context of a SHELL JOB was not set correctly, most likely with all contexts containing whitespace
 v3.0.43 (2014-08-19)
