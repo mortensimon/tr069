@@ -123,7 +123,7 @@ public class HTTPResponseCreator {
 			reqRes.setTR069TransactionID(new TR069TransactionID("OWERA-" + System.currentTimeMillis()));
 		Header header = new Header(reqRes.getTR069TransactionID(), null, null);
 		String keyRoot = reqRes.getSessionData().getKeyRoot();
-		Body body = new GPNreq(keyRoot);
+		Body body = new GPNreq(keyRoot, Properties.isNextLevel0InGPN(reqRes.getSessionData()));
 		return new Response(header, body);
 	}
 

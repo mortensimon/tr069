@@ -14,6 +14,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import com.owera.xaps.base.Log;
+import com.owera.xaps.tr069.Properties;
 import com.owera.xaps.tr069.exception.TR069Exception;
 import com.owera.xaps.tr069.test.system1.KillDatabase;
 import com.owera.xaps.tr069.test.system1.KillDatabaseObject;
@@ -187,7 +188,7 @@ public class CUreq extends Body {
 			kdo.setParamIndex(0);
 			kdo.setTestIndex(0);
 			KillDatabase.database.insert(unitId, kdo.toString());
-			GPNreq gpnReq = new GPNreq(keyRoot);
+			GPNreq gpnReq = new GPNreq(keyRoot, false);
 			return gpnReq.toXmlImpl();
 		} else if (kdo.getGpvFile().equals("null")) {
 			kdo.setParamIndex(0);

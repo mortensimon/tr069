@@ -54,6 +54,10 @@ public class Properties {
 	public static boolean isIgnoreVendorConfigFile(SessionData sessionData) {
 		return isQuirk("ignorevendorconfigfile", getUnittypeName(sessionData), getVersion(sessionData));
 	}
+	
+	public static boolean isNextLevel0InGPN(SessionData sessionData) {
+	  return isQuirk("nextlevel0ingpn", getUnittypeName(sessionData), getVersion(sessionData));
+	}
 
 	private static boolean isQuirk(String quirkName, String unittypeName, String version) {
 		if (unittypeName == null) {

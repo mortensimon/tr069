@@ -1,3 +1,5 @@
+v3.0.46 (2015-01-19)
+- add: added a quirk (check xaps-tr069.properties) to exchange <NextLevel>false</NextLevel> to <NextLevel>0</NextLevel> since a Huawei router had issues with false.
 v3.0.45 (2014-12-19)
 - lib: dbi v1.74.37 - a severe bug was fixed (matching of groups in a job)
 v3.0.44 (2014-11-19)
