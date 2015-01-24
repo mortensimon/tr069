@@ -14,7 +14,6 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import com.owera.xaps.base.Log;
-import com.owera.xaps.tr069.Properties;
 import com.owera.xaps.tr069.exception.TR069Exception;
 import com.owera.xaps.tr069.test.system1.KillDatabase;
 import com.owera.xaps.tr069.test.system1.KillDatabaseObject;

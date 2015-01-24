@@ -134,4 +134,8 @@ public class Properties {
 	public static int getXAPSCacheTimeout() {
 		return getInteger("xaps.cache.timeout", 300);
 	}
+	
+	public static boolean isFileAuthUsed() {
+	  return getString("file.auth.used", "false").equals("true");
+	}
 }

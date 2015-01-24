@@ -76,7 +76,7 @@ public class Authenticator {
       if (cv != null) {
         cv.setObject(((Integer) cv.getObject()) + 1);
       } else {
-        blockedClients.put(bcKey, new CacheValue((Integer) 1, Cache.SESSION, 5 * 60 * 1000));
+        blockedClients.put(bcKey, new CacheValue(1, Cache.SESSION, 5 * 60 * 1000));
       }
     }
   }
@@ -142,6 +142,7 @@ public class Authenticator {
     return authenticated;
   }
 
+  @SuppressWarnings("unused")
   private static boolean checkCertificate(HTTPReqResData reqRes) {
     SessionData sessionData = reqRes.getSessionData();
     Certificates certs = reqRes.getSessionData().getDbAccess().getXaps().getCertificates();
@@ -160,12 +161,8 @@ public class Authenticator {
           sessionData.setAuthenticated(false);
         }
       } else if (cert.getDateLimit() != null) {
-        if (System.currentTimeMillis() <= cert.getDateLimit().getTime() + 1440 * 60 * 1000) { // will
-                                                                                              // always
-                                                                                              // add
-                                                                                              // 1
-                                                                                              // day
-                                                                                              // extra
+        // will always add 1 day extra
+        if (System.currentTimeMillis() <= cert.getDateLimit().getTime() + 1440 * 60 * 1000) {
           sessionData.setAuthenticated(true);
         } else {
           Log.error(Authenticator.class, "The authentication was ok, but the Fusion provisioning certificate expired at " + cert.getDateLimit());

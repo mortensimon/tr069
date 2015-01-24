@@ -174,7 +174,7 @@ public class EMDecision {
 			Log.info(EMDecision.class, "EM-Decision is EM since two last responses from CPE was EM");
 			reqRes.getResponse().setMethod(TR069Method.EMPTY);
 		} else if (prevResponseMethod.equals(TR069Method.INFORM) || prevResponseMethod.equals(TR069Method.TRANSFER_COMPLETE) || prevResponseMethod.equals(TR069Method.GET_RPC_METHODS_RES)) {
-			if (sessionData != null && sessionData.getUnittype() == null) {
+			if (sessionData.getUnittype() == null) {
 				Log.info(EMDecision.class, "EM-Decision is EM since unittype is not found");
 				reqRes.getResponse().setMethod(TR069Method.EMPTY);
 			} else if (Properties.isTestMode() && testExecution(reqRes)) {

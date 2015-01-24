@@ -1,14 +1,11 @@
 package com.owera.xaps.tr069.methods;
 
-import java.sql.SQLException;
-
-import com.owera.common.db.NoAvailableConnectionException;
 import com.owera.xaps.base.Log;
 import com.owera.xaps.tr069.HTTPReqResData;
 import com.owera.xaps.tr069.xml.Fault;
 
 public class TCDecision {
-	public static void process(HTTPReqResData reqRes) throws SQLException, NoAvailableConnectionException {
+	public static void process(HTTPReqResData reqRes) {
 
 		try {
 			Fault fault = reqRes.getRequest().getFault();

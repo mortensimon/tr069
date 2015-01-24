@@ -34,7 +34,7 @@ public class StabilityTask extends TaskDefaultImpl {
 		return String.format("(%4sd) %5s:%02d", days, hours, min);
 	}
 	
-	private String getUsedMemory() {
+	private static String getUsedMemory() {
 		//		Runtime.getRuntime().gc();
 		long total = Runtime.getRuntime().totalMemory();
 		long free = Runtime.getRuntime().freeMemory();

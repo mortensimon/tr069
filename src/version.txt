@@ -1,3 +1,8 @@
+v3.1.0 (2015-01-25)
+- sec: added digest/basic authentication to File download (used in Firmware upgrade/Config file download(etc). By default, no authentication is required for file download,
+but it can be turned on by setting file.auth.used = true in xaps-tr069.properties.
+- ref: Removed a lot of warnings in the code - added a few more checks for null. *Should* not affect anything.
+- lib: prov v1.4.28 (moved FileServlet back to TR-069/SPP server project)
 v3.0.46 (2015-01-19)
 - add: added a quirk (check xaps-tr069.properties) to exchange <NextLevel>false</NextLevel> to <NextLevel>0</NextLevel> since a Huawei router had issues with false.
 v3.0.45 (2014-12-19)

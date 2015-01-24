@@ -113,7 +113,7 @@ public class SessionData implements SessionDataI {
 	private List<ParameterValueStruct> requestedCPE;
 
 	/* Job */
-	private Job job;;
+	private Job job;
 	/* All parameters from a job */
 	private Map<String, JobParameter> jobParams;
 	/* ServiceWindow */

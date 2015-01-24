@@ -52,7 +52,7 @@ public class TestServlet extends HttpServlet {
 		doGet(req, res);
 	}
 
-	private void intro(HttpServletRequest req, Element body) {
+	private static void intro(HttpServletRequest req, Element body) {
 		body.add("The xAPS Test Verfication Process is a really simple way of testing your TR-069 device and at ");
 		body.add("the same time make sure it is interoperable with xAPS. The tests are taken from PD-128v9, which ");
 		body.add("is the test document used at TR-069 plugfests. However, only the most basic tests are part of ");
@@ -71,7 +71,7 @@ public class TestServlet extends HttpServlet {
 		body.p();
 	}
 
-	private TestDatabaseObject input(HttpServletRequest req, Element body, String username) throws Exception {
+	private static TestDatabaseObject input(HttpServletRequest req, Element body, String username) throws Exception {
 		KillDatabase.refresh();
 		Element form = body.form("test", "post", "form1");
 		Element table = form.table();

@@ -127,7 +127,7 @@ public class INreq {
 				}
 				if (pvs.getName().equals(cpeParams.CONNECTION_URL))
 					cpeParams.putPvs(cpeParams.CONNECTION_URL, pvs);
-				if (pvs.getName().equals(informParams.UDP_CONNECTION_URL))
+				if (informParams != null && pvs.getName().equals(informParams.UDP_CONNECTION_URL))
 					informParams.putPvs(informParams.UDP_CONNECTION_URL, pvs);
 				//				if (pvs.getName().equals(cpeParams.CONFIG_VERSION))
 				//					cpeParams.putPvs(cpeParams.CONFIG_VERSION, pvs);
@@ -139,7 +139,7 @@ public class INreq {
 			throw new TR069Exception("Parsed INreq params, but no keyroot could be found, most likely because no parameters were sent in ParameterList", TR069ExceptionShortMessage.MISC);
 		} else {
 			String msg = "Parsed INreq params, found keyroot:" + keyRoot + ", parameterkey:" + pk.getCpeKey();
-			msg += ", swver:" + cpeParams.getValue(cpeParams.SOFTWARE_VERSION);
+			msg += ", swver:" + (cpeParams == null ? "Unknown" : ""+ cpeParams.getValue(cpeParams.SOFTWARE_VERSION));
 			Log.debug(INreq.class, msg);
 		}
 	}

@@ -25,11 +25,10 @@ import com.owera.xaps.dbi.XAPSUnit;
 import com.owera.xaps.dbi.util.SystemParameters;
 import com.owera.xaps.tr069.CPEParameters;
 import com.owera.xaps.tr069.Provisioning;
-import com.owera.xaps.tr069.HTTPReqResData;
 import com.owera.xaps.tr069.SessionData;
-import com.owera.xaps.tr069.exception.TR069ExceptionShortMessage;
 import com.owera.xaps.tr069.exception.TR069DatabaseException;
 import com.owera.xaps.tr069.exception.TR069Exception;
+import com.owera.xaps.tr069.exception.TR069ExceptionShortMessage;
 import com.owera.xaps.tr069.methods.GPVDecision;
 import com.owera.xaps.tr069.xml.ParameterList;
 import com.owera.xaps.tr069.xml.ParameterValueStruct;
@@ -59,7 +58,7 @@ public class ShellJobLogic {
 	 * @throws SQLException
 	 * @throws NoAvailableConnectionException
 	 */
-	public static void execute(HTTPReqResData reqRes, SessionData sessionData, Job job, UnitJob uj) throws TR069Exception {
+	public static void execute(SessionData sessionData, Job job, UnitJob uj) throws TR069Exception {
 		String unitId = sessionData.getUnitId();
 		CacheValue cv = monitorCache.get(unitId);
 		if (cv == null) {
@@ -70,9 +69,9 @@ public class ShellJobLogic {
 			// read parameters from device and save it to the unit
 			ShellJobLogic.importReadOnlyParameters(sessionData);
 			// execute changes using the shell-script, all changes are written to database
-			ShellJobLogic.executeShellScript(reqRes, sessionData, job, uj);
+			ShellJobLogic.executeShellScript(sessionData, job, uj);
 			// read the changes from the database and send to CPE
-			ShellJobLogic.prepareSPV(sessionData, job);
+			ShellJobLogic.prepareSPV(sessionData);
 		}
 	}
 
@@ -89,7 +88,7 @@ public class ShellJobLogic {
 	 * @throws TR069DatabaseException 
 	 * @throws
 	 */
-	private static void executeShellScript(HTTPReqResData reqRes, SessionData sessionData, Job job, UnitJob uj) throws TR069Exception {
+	private static void executeShellScript(SessionData sessionData, Job job, UnitJob uj) throws TR069Exception {
 		ScriptExecutions executions = Provisioning.getExecutions();
 		String scriptArgs = "\"-uut:" + sessionData.getUnittype().getName() + "/pr:" + sessionData.getProfile().getName() + "/un:" + sessionData.getUnitId() + "\"";
 		String requestId = "JOB:" + job.getId() + ":" + random.nextInt(1000000); // should be a unique Id
@@ -185,7 +184,7 @@ public class ShellJobLogic {
 			UnittypeParameter utp = utps.getByName(pvsCPE.getName());
 			if (utp == null || !utp.getFlag().isReadOnly())
 				continue;
-			ParameterValueStruct pvsDB = (ParameterValueStruct) sessionData.getFromDB().get(pvsCPE.getName());
+			ParameterValueStruct pvsDB = sessionData.getFromDB().get(pvsCPE.getName());
 			/* Make sure that all AlwaysRead-params and all populated Read-params are written to DB here. This
 			 * Will make sure DB has the right state when the script is executed in the next step. 
 			 */
@@ -210,7 +209,7 @@ public class ShellJobLogic {
 		}
 	}
 
-	private static void prepareSPV(SessionData sessionData, Job job) throws TR069DatabaseException {
+	private static void prepareSPV(SessionData sessionData) throws TR069DatabaseException {
 		toCPE(sessionData);
 		List<ParameterValueStruct> toDB = new ArrayList<ParameterValueStruct>();
 		sessionData.setToDB(toDB);

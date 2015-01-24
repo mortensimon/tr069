@@ -9,7 +9,7 @@ public class BackgroundProcesses {
 
 	private static Scheduler scheduler = new Scheduler();
 
-	public void initiate(DBI dbi) {
+	public static void initiate(DBI dbi) {
 		Thread t = new Thread(scheduler);
 		t.setName("TR069 (BackgroundProcesses)");
 		t.start();

@@ -7,7 +7,8 @@ import com.owera.xaps.tr069.HTTPReqResData;
 
 public class DoNotProcessReq {
 
-	public static void process(HTTPReqResData reqRes) throws SQLException, NoAvailableConnectionException {
+	@SuppressWarnings("unused")
+  public static void process(HTTPReqResData reqRes) throws SQLException, NoAvailableConnectionException {
 		// Nothing needs to be processed, because there is nothing in the request to process (for example if the request is EMPTY
 	}
 }

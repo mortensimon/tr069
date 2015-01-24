@@ -1,20 +1,18 @@
 package com.owera.xaps.tr069.methods;
 
-import java.sql.SQLException;
 import java.util.List;
 
-import com.owera.common.db.NoAvailableConnectionException;
 import com.owera.xaps.base.Log;
 import com.owera.xaps.dbi.util.ProvisioningMessage;
-import com.owera.xaps.dbi.util.ProvisioningMode;
 import com.owera.xaps.dbi.util.ProvisioningMessage.ErrorResponsibility;
 import com.owera.xaps.dbi.util.ProvisioningMessage.ProvStatus;
+import com.owera.xaps.dbi.util.ProvisioningMode;
 import com.owera.xaps.tr069.HTTPReqResData;
 import com.owera.xaps.tr069.SessionData;
 import com.owera.xaps.tr069.xml.Fault;
 
 public class FADecision {
-	public static void process(HTTPReqResData reqRes) throws SQLException, NoAvailableConnectionException {
+	public static void process(HTTPReqResData reqRes) {
 		//		Fault fault = reqRes.getRequest().getFault();
 		//		String errormsg = null;
 		//		if (fault != null)

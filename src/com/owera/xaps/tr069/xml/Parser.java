@@ -170,7 +170,7 @@ public class Parser extends DefaultHandler {
 		return this.fault;
 	}
 
-	private InputSource getStringAsSource(String xml) {
+	private static InputSource getStringAsSource(String xml) {
 		if (xml != null && !xml.equals("")) {
 			StringReader xmlReader = new StringReader(xml);
 			return new InputSource(xmlReader);

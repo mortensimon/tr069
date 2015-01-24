@@ -51,9 +51,9 @@ public class Provisioning extends HttpServlet {
 
 	private static final long serialVersionUID = -3020450686422484143L;
 
-	public static final String VERSION = "3.0.46";
+	public static final String VERSION = "3.1.0";
 
-	private static BackgroundProcesses backgroundProcesses = new BackgroundProcesses();
+//	private static BackgroundProcesses backgroundProcesses = new BackgroundProcesses();
 
 	private static ScriptExecutions executions;
 
@@ -65,7 +65,7 @@ public class Provisioning extends HttpServlet {
 		com.owera.common.log.Log.initialize("xaps-tr069-logs.properties");
 		Log.notice(Provisioning.class, "Server starts...");
 		try {
-			backgroundProcesses.initiate(DBAccess.getDBI());
+			BackgroundProcesses.initiate(DBAccess.getDBI());
 		} catch (Throwable t) {
 			Log.fatal(Provisioning.class, "Couldn't start BackgroundProcesses correctly ", t);
 		}
@@ -150,7 +150,8 @@ public class Provisioning extends HttpServlet {
 	 * @return
 	 * @throws IOException
 	 */
-	private boolean hasContinueHeader(HttpServletRequest req, HttpServletResponse res) throws IOException {
+	@SuppressWarnings("unused")
+  private static boolean hasContinueHeader(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		// Support 100 Continue header - always YES - CONTINUE!
 		if (req.getHeader("Expect") != null && req.getHeader("Expect").indexOf("100-continue") > -1) {
 			res.setStatus(HttpServletResponse.SC_CONTINUE);
@@ -265,7 +266,7 @@ public class Provisioning extends HttpServlet {
 			ThreadCounter.responseDelivered(reqRes.getSessionData());
 	}
 
-	private void initiateNewTestSession(HTTPReqResData reqRes) {
+	private static void initiateNewTestSession(HTTPReqResData reqRes) {
 		try {
 			List<HTTPReqResData> reqResList = reqRes.getSessionData().getReqResList();
 			boolean deviceHasAlreadyBooted = false;
@@ -283,7 +284,7 @@ public class Provisioning extends HttpServlet {
 		}
 	}
 
-	private void writeQueuedUnitParameters(HTTPReqResData reqRes) {
+	private static void writeQueuedUnitParameters(HTTPReqResData reqRes) {
 		try {
 			Unit unit = reqRes.getSessionData().getUnit();
 			if (unit != null) {
@@ -296,7 +297,7 @@ public class Provisioning extends HttpServlet {
 		}
 	}
 
-	private boolean endOfSession(HTTPReqResData reqRes) {
+	private static boolean endOfSession(HTTPReqResData reqRes) {
 		try {
 			SessionData sessionData = reqRes.getSessionData();
 			HTTPReqData reqData = reqRes.getRequest();

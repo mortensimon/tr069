@@ -1,5 +1,6 @@
 package com.owera.xaps.tr069.methods;
 
+import com.owera.xaps.tr069.Properties;
 import com.owera.xaps.tr069.xml.Body;
 
 public class DOreq extends Body {
@@ -49,13 +50,17 @@ public class DOreq extends Body {
 	private int filesize;
 	private String targetFilename;
 	private String commandKey;
+	private String username;
+	private String password;
 
-	public DOreq(String url, String type, String targetFilename, int filesize, String commandKey) {
+	public DOreq(String url, String type, String targetFilename, int filesize, String commandKey, String username, String password) {
 		this.url = url;
 		this.type = type;
 		this.filesize = filesize;
 		this.targetFilename = targetFilename;
 		this.commandKey = commandKey;
+		this.username = username;
+		this.password = password;
 	}
 
 	@Override
@@ -75,9 +80,14 @@ public class DOreq extends Body {
 		sb.append(URL_START);
 		sb.append(url);
 		sb.append(URL_END);
+		
 		sb.append(USERNAME_START);
+		if (Properties.isFileAuthUsed())
+		  sb.append(username);
 		sb.append(USERNAME_END);
 		sb.append(PASSWORD_START);
+		if (Properties.isFileAuthUsed())
+		  sb.append(password);
 		sb.append(PASSWORD_END);
 		sb.append("\t\t\t<FileSize>" + filesize + "</FileSize>\n");
 		if (targetFilename != null)
