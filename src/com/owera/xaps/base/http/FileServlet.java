@@ -19,6 +19,7 @@ import com.owera.xaps.dbi.FileType;
 import com.owera.xaps.dbi.Unittype;
 import com.owera.xaps.dbi.XAPS;
 import com.owera.xaps.tr069.HTTPReqResData;
+import com.owera.xaps.tr069.Properties;
 
 public class FileServlet extends HttpServlet {
 
@@ -29,14 +30,20 @@ public class FileServlet extends HttpServlet {
     String firmwareName = null;
     String unittypeName = null;
     OutputStream out = null;
+    String authUnittypeName = null;
 
     try {
       // Create the main object which contains all objects concerning the entire
       // session. This object also contains the SessionData object
-      HTTPReqResData reqRes = new HTTPReqResData(req, res);
-      // 2. Authenticate the client (first issue challenge, then authenticate)
-      if (!Authenticator.authenticate(reqRes))
-        return;
+      if (Properties.isFileAuthUsed()) {
+        HTTPReqResData reqRes = new HTTPReqResData(req, res);
+        // 2. Authenticate the client (first issue challenge, then authenticate)
+        if (!Authenticator.authenticate(reqRes))
+          return;
+        if (reqRes.getSessionData() != null && reqRes.getSessionData().getUnittype() != null) {
+          authUnittypeName = reqRes.getSessionData().getUnittype().getName();
+        }
+      }
 
       XAPS xaps = DBAccess.getDBI().getXaps();
       File firmware = null;
@@ -47,6 +54,12 @@ public class FileServlet extends HttpServlet {
                                                             // FileType.TYPE_SOFTWARE/TYPE_SCRIPT
       String firmwareVersion = pathInfoArr[1];
       unittypeName = pathInfoArr[2];
+      if (authUnittypeName != null && !unittypeName.equals(authUnittypeName)) {
+        Log.error(FileServlet.class, "Requested file in " + unittypeName + ", but was only authorized for files in " + authUnittypeName);
+        res.sendError(HttpServletResponse.SC_FORBIDDEN);
+        return;
+      }
+    
       if (pathInfoArr.length > 3) // The optional unit-id is also sent - only
                                   // for logging purpose
         Context.put(Context.X, pathInfoArr[3], BaseCache.SESSIONDATA_CACHE_TIMEOUT);
