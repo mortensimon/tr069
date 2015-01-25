@@ -1,3 +1,6 @@
+v3.1.1 (2015-01-25)
+- ref: a Script download URL will end with the File name instead of the scriptname. It will be easier to specify a URL with a correct filename suffix that way.
+- doc: updated documenation about firmware/config download
 v3.1.0 (2015-01-25)
 - sec: added authorization check to File download, to make sure a device can only donwload a file within it's unittype
 - sec: added digest/basic authentication to File download (used in Firmware upgrade/Config file download(etc). By default, no authentication is required for file download,
