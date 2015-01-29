@@ -1,3 +1,5 @@
+v3.1.2 (2015-01-29)
+- bug: TransferCompleteResponse did not return the CWMP:ID correctly
 v3.1.1 (2015-01-25)
 - ref: a Script download URL will end with the File name instead of the scriptname. It will be easier to specify a URL with a correct filename suffix that way.
 - doc: updated documenation about firmware/config download
