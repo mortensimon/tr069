@@ -19,7 +19,7 @@ public class SPAreq extends Body {
 	private static final String NOTIFICATION_END = "</Notification>\n";
 	private static final String NOTIFICATION_CHANGE_START = "\t\t\t\t\t<NotificationChange>";
 	private static final String NOTIFICATION_CHANGE_END = "</NotificationChange>\n";
-	private static final String PARAMETER_VALUE_STRUCT_END = "\t\t\t\t</SetParameterAttributeStruct>\n";
+	private static final String PARAMETER_VALUE_STRUCT_END = "\t\t\t\t</SetParameterAttributesStruct>\n";
 	private static final String PARAMETER_LIST_END = "\t\t\t</ParameterList>\n";
 
 	private List<ParameterAttributeStruct> parameterAttributeList;
